@@ -1,6 +1,7 @@
-# 🧠 Stock News Sentiment Trader
+# 📈 Stock News Sentiment Trader
 
 An end-to-end **AI pipeline** that:
+
 1. Fetches latest stock-related news headlines
 2. Runs **FinBERT** (finance-specific BERT) for sentiment analysis
 3. Converts sentiment into simple **BUY / SELL / HOLD** signals
@@ -13,25 +14,26 @@ Built with a focus on **AIML + real-world APIs + deployment-readiness**.
 
 ## 🔍 Features
 
-- ✅ Live news scraping via NewsAPI
-- ✅ Transformer-based sentiment analysis (`ProsusAI/finbert`)
-- ✅ Rule-based trading signal engine
-- ✅ Persistent storage of signals (`data/signals.csv`)
-- ✅ Streamlit dashboard:
-  - Recent signals table
-  - Signal distribution (BUY/SELL/HOLD)
-  - Confidence trend over time
+* Live news scraping via NewsAPI
+* Transformer-based sentiment analysis (`ProsusAI/finbert`)
+* Rule-based trading signal engine
+* Persistent storage of signals (`data/signals.csv`)
+* Streamlit dashboard:
+
+  * Recent signals table
+  * Signal distribution (BUY/SELL/HOLD)
+  * Confidence trend over time
 
 ---
 
 ## 🏗 Tech Stack
 
-- **Language:** Python 3.x  
-- **NLP:** `transformers`, FinBERT (`ProsusAI/finbert`)  
-- **Data:** `pandas`  
-- **App:** `streamlit`  
-- **Config:** `.env` + `python-dotenv`  
-- **HTTP:** `requests`  
+* **Language:** Python 3.x
+* **NLP:** `transformers`, FinBERT (`ProsusAI/finbert`)
+* **Data:** `pandas`
+* **App:** `streamlit`
+* **Config:** `.env` + `python-dotenv`
+* **HTTP:** `requests`
 
 ---
 
@@ -51,71 +53,94 @@ stock-news-sentiment-trader/
 ├── .env                  # API keys (NOT committed)
 ├── .gitignore
 └── README.md
+```
 
 ---
 
 ## 🚀 How to Run This Project
 
 ### 1️⃣ Clone the Repository
+
 ```bash
 git clone https://github.com/Aditya1865/stock-news-sentiment-trader.git
 cd stock-news-sentiment-trader
+```
 
 ### 2️⃣ Create Virtual Environment (Recommended)
+
+```bash
 python3 -m venv venv
 source venv/bin/activate     # macOS / Linux users
 # venv\Scripts\activate      # Windows users
+```
 
 ### 3️⃣ Install Dependencies
+
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
 ### 4️⃣ Add Your API Key
+
+Create a `.env` file in the root folder:
+
+```env
 NEWS_API_KEY=your_newsapi_key_here
 NEWS_API_ENDPOINT=https://newsapi.org/v2/everything
+```
 
-Get your free NewsAPI key here: https://newsapi.org/register
+Get your free NewsAPI key here: [https://newsapi.org/register](https://newsapi.org/register)
 
-##🧠 Run the AI Pipeline
+---
+
+## 🧠 Run the AI Pipeline
 
 This command fetches news → performs sentiment → generates signals:
 
+```bash
 python3 src/main.py
-
+```
 
 Output:
 
-Logs in terminal
+* Logs in terminal
+* Creates/updates `data/signals.csv`
 
-Creates/updates data/signals.csv
+---
 
-##📊 Launch the Dashboard
+## 📊 Launch the Dashboard
 
 Visualize signals interactively on a local web app:
 
+```bash
 streamlit run src/dashboard.py
-
+```
 
 Then open the link shown in the terminal (usually):
 
+```text
 http://localhost:8501
-
+```
 
 Dashboard Features:
 
-Sentiment confidence chart
+* Sentiment confidence chart
+* Latest BUY/SELL/HOLD signals
+* Filter by stock ticker
 
-Latest BUY/SELL/HOLD signals
+---
 
-Filter by stock ticker
-
-##🧪 Optional Debug Commands
+## 🧪 Optional Debug Commands
 
 Test news fetching only:
 
+```bash
 python3 src/news_api.py
-
+```
 
 Test sentiment model only:
 
+```bash
 python3 src/sentiment.py
+```
